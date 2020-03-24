@@ -1,0 +1,165 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <app-side-menu></app-side-menu>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <app-header></app-header>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                      <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#addRecord">
+                        Add
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Designation</th>
+                              <th>Department</th>
+                              <th>Place</th>
+                              <th>Start date</th>
+                              <th class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of dummyData">
+                              <td>{{item.name}}</td>
+                              <td>{{item.desig}}</td>
+                              <td>{{item.dept}}</td>
+                              <td>{{item.place}}</td>
+                              <td>{{item.date | date}}</td>
+                              <td class="text-center">
+                                <div>
+                                  <button class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#addRecord">
+                                    Edit
+                                  </button>
+                                  <button class="btn btn-secondary btn-sm">
+                                    Delete
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+
+  <div class="modal fade" id="addRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="dummyForm">
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Name</label>
+                      <input type="text"  formControlName="name" name="name"  class="form-control" placeholder="Enter Name">
+                    </div> 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Designation</label>
+                      <input type="text"  formControlName="desig" name="desig"  class="form-control" placeholder="Enter Name">
+                      <!-- <select name="designation" id="" class="form-control" formControlName="designation">
+                        <option value="0" selected>Select Designation</option>
+                        <option value="1">System Architect</option>
+                        <option value="2">Accountant</option>
+                        <option value="3">Junior Technical Author</option>
+                        <option value="4">Senior Javascript Developer</option>
+                        <option value="5">Integration Specialist</option>
+                      </select> -->
+                    </div> 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Department</label>
+                      <input type="text"  formControlName="dept" name="dept"  class="form-control" placeholder="Enter Name">
+                      <!-- <select name="department" id="" class="form-control" formControlName="department">
+                        <option value="0" selected>Select Department</option>
+                        <option value="1">Software</option>
+                        <option value="2">Accounts</option>
+                        <option value="3">Technical</option>
+                        <option value="4">Information Technology</option>
+                        <option value="5">Security</option>
+                      </select> -->
+                    </div> 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Place</label>
+                      <input type="text" name="place" class="form-control" placeholder="Enter Dept." formControlName="place">
+                    </div> 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Date</label>
+                      <input type="number" name="date" id="" placeholder="Enter Date" formControlName="date" class="form-control">
+                    </div> 
+                  </div>
+              </div>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit"  (click)="submitData()" >Add</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
